@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.debug.pmp.model.mapper.SysMenuDao">
+<mapper namespace="com.wizard.demo01.model.mapper.SysMenuDao">
 
-	<select id="queryListParentId" resultType="com.debug.pmp.model.entity.SysMenuEntity">
+	<select id="queryListParentId" resultType="com.wizard.demo01.model.entity.SysMenuEntity">
 		select * from sys_menu where parent_id = #{parentId} order by order_num asc 
 	</select>
 
 	<!-- select * from sys_menu where type != 2 order by order_num asc -->
-	<select id="queryNotButtonList" resultType="com.debug.pmp.model.entity.SysMenuEntity">
+	<select id="queryNotButtonList" resultType="com.wizard.demo01.model.entity.SysMenuEntity">
 
 		SELECT
 		  t1.*,
@@ -22,7 +22,7 @@
 	</select>
 
 
-	<select id="queryList" resultType="com.debug.pmp.model.entity.SysMenuEntity">
+	<select id="queryList" resultType="com.wizard.demo01.model.entity.SysMenuEntity">
 		SELECT
 		  t1.*,
 		  (SELECT t2.name

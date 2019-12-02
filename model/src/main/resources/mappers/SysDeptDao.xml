@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.debug.pmp.model.mapper.SysDeptDao">
+<mapper namespace="com.wizard.demo01.model.mapper.SysDeptDao">
 
-	<select id="queryList" resultType="com.debug.pmp.model.entity.SysDeptEntity">
+	<select id="queryList" resultType="com.wizard.demo01.model.entity.SysDeptEntity">
 		SELECT
 			t1.*,
 			(SELECT t2.name
@@ -19,7 +19,7 @@
 	</select>
 
 
-	<select id="queryListV2" resultType="com.debug.pmp.model.entity.SysDeptEntity">
+	<select id="queryListV2" resultType="com.wizard.demo01.model.entity.SysDeptEntity">
 		SELECT
 		  t1.*,
 		  (SELECT t2.name

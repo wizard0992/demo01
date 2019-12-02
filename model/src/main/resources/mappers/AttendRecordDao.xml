@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.debug.pmp.model.mapper.AttendRecordDao">
+<mapper namespace="com.wizard.demo01.model.mapper.AttendRecordDao">
 
     <sql id="commonQueryAll">
         SELECT
@@ -12,7 +12,7 @@
           LEFT JOIN sys_dept AS c ON c.dept_id = a.dept_id
     </sql>
 
-    <select id="queryPage" resultType="com.debug.pmp.model.entity.AttendRecordEntity" parameterType="Map">
+    <select id="queryPage" resultType="com.wizard.demo01.model.entity.AttendRecordEntity" parameterType="Map">
         <include refid="commonQueryAll"/>
 
         <where>
@@ -40,7 +40,7 @@
 
 
 
-    <select id="selectExportData" resultType="com.debug.pmp.model.entity.AttendRecordEntity" parameterType="Map">
+    <select id="selectExportData" resultType="com.wizard.demo01.model.entity.AttendRecordEntity" parameterType="Map">
           <include refid="commonQueryAll"/>
 
           <where>
@@ -64,7 +64,7 @@
         ORDER BY a.create_time DESC
     </select>
 
-    <select id="queryPageSqlServer" resultType="com.debug.pmp.model.entity.AttendRecordEntity" parameterType="Map">
+    <select id="queryPageSqlServer" resultType="com.wizard.demo01.model.entity.AttendRecordEntity" parameterType="Map">
         <include refid="commonQueryAll"/>
 
         <where>
@@ -90,7 +90,7 @@
 
 
 
-<!--    <select id="selectAllMysql" resultType="com.debug.pmp.model.entity.AttendRecordEntity" parameterType="Map">
+<!--    <select id="selectAllMysql" resultType="com.wizard.demo01.model.entity.AttendRecordEntity" parameterType="Map">
         <include refid="commonQueryAll"/>
 
         <where>
