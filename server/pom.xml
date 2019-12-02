@@ -28,6 +28,7 @@
         <dependency>
             <groupId>com.wizard</groupId>
             <artifactId>model</artifactId>
+            <version>${project.parent.version}</version>
         </dependency>
 
         <!--freemarker-->

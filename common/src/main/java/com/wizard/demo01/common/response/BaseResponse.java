@@ -12,6 +12,10 @@ public class BaseResponse<T> {
 
     private T data;
 
+
+    /**
+     * @param statusCode
+     */
     public BaseResponse(StatusCode statusCode) {
         this.code = statusCode.getCode();
         this.msg = statusCode.getMsg();
