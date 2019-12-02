@@ -10,8 +10,12 @@ import org.hibernate.validator.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+/**
+ * 角色实体
+ * @author wizard_0992
+ * @date 2019/12/2 14:23
+ */
 
-//角色实体
 @Data
 @TableName("sys_role")
 public class SysRoleEntity implements Serializable {

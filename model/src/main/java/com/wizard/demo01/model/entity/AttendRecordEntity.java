@@ -9,7 +9,11 @@ import lombok.Data;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-
+/**
+ * @author wizard_0992
+ * @date 2019/12/2 14:23
+ * exist = false(非数据库内的固有字段)
+ */
 @Data
 @TableName("attend_record")
 public class AttendRecordEntity implements Serializable{

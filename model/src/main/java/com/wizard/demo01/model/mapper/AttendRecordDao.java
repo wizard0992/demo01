@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Administrator on 2019/7/23.
+ * @author wizard_0992
+ * @date 2019/12/2 14:23
  */
 @Mapper
 public interface AttendRecordDao extends BaseMapper<AttendRecordEntity> {

@@ -5,8 +5,12 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
+/**
+ * 角色与用户关联关系
+ * @author wizard_0992
+ * @date 2019/12/2 14:23
+ */
 
-//角色与用户关联关系
 @Data
 @TableName("sys_user_role")
 public class SysUserRoleEntity implements Serializable {

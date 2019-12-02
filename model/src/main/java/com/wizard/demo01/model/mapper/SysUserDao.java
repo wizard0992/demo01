@@ -7,8 +7,12 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Set;
+/**
+ * 系统用户
+ * @author wizard_0992
+ * @date 2019/12/2 14:23
+ */
 
-//系统用户
 @Mapper
 public interface SysUserDao extends BaseMapper<SysUserEntity> {
 	

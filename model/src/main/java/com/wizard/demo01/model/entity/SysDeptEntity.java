@@ -11,7 +11,11 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
-//部门实体
+/**
+ * @author wizard_0992
+ * @date 2019/12/2 14:23
+ */
+
 @Data
 @TableName("sys_dept")
 public class SysDeptEntity implements Serializable {
@@ -36,7 +40,7 @@ public class SysDeptEntity implements Serializable {
 	//排序编号
 	private Integer orderNum;
 
-	//删除标记
+	//删除标记注解
 	@TableLogic
 	private Integer delFlag;
 

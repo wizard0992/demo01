@@ -6,7 +6,8 @@ import com.wizard.demo01.model.entity.ItemTypeEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * Created by Administrator on 2019/7/23.
+ * @author wizard_0992
+ * @date 2019/12/2 14:23
  */
 @Mapper
 public interface ItemTypeDao extends BaseMapper<ItemTypeEntity> {

@@ -7,8 +7,12 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import java.io.Serializable;
 import java.util.Date;
+/**
+ * 商品类别
+ * @author wizard_0992
+ * @date 2019/12/2 14:23
+ */
 
-//商品类别
 @Data
 @TableName("item_type")
 public class ItemTypeEntity implements Serializable{

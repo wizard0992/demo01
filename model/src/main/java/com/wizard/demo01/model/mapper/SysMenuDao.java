@@ -5,8 +5,12 @@ import com.wizard.demo01.model.entity.SysMenuEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+/**
+ * 菜单管理
+ * @author wizard_0992
+ * @date 2019/12/2 14:23
+ */
 
-//菜单管理
 @Mapper
 public interface SysMenuDao extends BaseMapper<SysMenuEntity> {
 	

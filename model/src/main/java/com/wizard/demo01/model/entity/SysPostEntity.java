@@ -8,8 +8,12 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import java.io.Serializable;
 import java.util.Date;
+/**
+ * 岗位实体
+ * @author wizard_0992
+ * @date 2019/12/2 14:23
+ */
 
-//岗位实体
 @Data
 @TableName("sys_post")
 public class SysPostEntity implements Serializable{

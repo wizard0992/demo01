@@ -7,8 +7,11 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Set;
-
-//用户与岗位关联关系
+/**
+ * 用户与岗位关联关系
+ * @author wizard_0992
+ * @date 2019/12/2 14:23
+ */
 @Mapper
 public interface SysUserPostDao extends BaseMapper<SysUserPostEntity> {
 	

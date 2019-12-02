@@ -5,8 +5,12 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
+/**
+ * 角色与菜单关联关系实体
+ * @author wizard_0992
+ * @date 2019/12/2 14:23
+ */
 
-//角色与菜单关联关系实体
 @Data
 @TableName("sys_role_menu")
 public class SysRoleMenuEntity implements Serializable {

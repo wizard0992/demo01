@@ -10,8 +10,13 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+/**
+ * 用户实体
+ * @author wizard_0992
+ * @date 2019/12/2 14:23
+ * exist=false(非数据库内的固有字段)
+ */
 
-//用户实体
 @Data
 @TableName("sys_user")
 public class SysUserEntity implements Serializable {

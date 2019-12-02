@@ -7,8 +7,12 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+/**
+ * 系统日志
+ * @author wizard_0992
+ * @date 2019/12/2 14:23
+ */
 
-//系统日志
 @Data
 @TableName("sys_log")
 public class SysLogEntity implements Serializable {

@@ -6,8 +6,12 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+/**
+ * 角色与部门关联关系
+ * @author wizard_0992
+ * @date 2019/12/2 14:23
+ */
 
-//角色与部门关联关系
 @Mapper
 public interface SysRoleDeptDao extends BaseMapper<SysRoleDeptEntity> {
 	

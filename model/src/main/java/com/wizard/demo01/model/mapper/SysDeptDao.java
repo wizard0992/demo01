@@ -8,7 +8,10 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
+/**
+ * @author wizard_0992
+ * @date 2019/12/2 14:23
+ */
 //部门管理
 @Mapper
 public interface SysDeptDao extends BaseMapper<SysDeptEntity> {

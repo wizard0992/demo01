@@ -7,8 +7,12 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.List;
+/**
+ * 菜单管理
+ * @author wizard_0992
+ * @date 2019/12/2 14:23
+ */
 
-//菜单管理
 @Data
 @TableName("sys_menu")
 public class SysMenuEntity implements Serializable {

@@ -8,8 +8,12 @@ import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 
 import java.io.Serializable;
+/**
+ * 数据字典
+ * @author wizard_0992
+ * @date 2019/12/2 14:23
+ */
 
-//数据字典
 @Data
 @TableName("sys_dict")
 public class SysDictEntity implements Serializable {
