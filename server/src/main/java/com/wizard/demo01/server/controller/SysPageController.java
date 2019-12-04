@@ -15,10 +15,10 @@ public class SysPageController {
 
     @RequestMapping("login.html")
     public String login(){
-        if (SecurityUtils.getSubject().isAuthenticated()){
+        /*if (SecurityUtils.getSubject().isAuthenticated()){
             return "redirect:index.html";
-        }
+        }*/
         return "login";
-    }
+        }
 
-}
+        }

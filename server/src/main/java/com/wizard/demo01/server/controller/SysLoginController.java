@@ -24,14 +24,6 @@ import java.awt.image.BufferedImage;
  * @date 2019/12/2 15:51
  */
 
-
-/**
- * 登录
- * @param
- * @param
- * @param
- * @return
- */
 @Controller
 public class SysLoginController extends AbstractController{
 
@@ -45,7 +37,7 @@ public class SysLoginController extends AbstractController{
         log.info("用户名：{} 密码：{} 验证码:{}",username,password,captcha);
 
         //校验验证码
-        String kaptcha= ShiroUtil.getKaptcha(Constants.KAPTCHA_SESSION_KEY);
+       /* String kaptcha= ShiroUtil.getKaptcha(Constants.KAPTCHA_SESSION_KEY);
         if (!kaptcha.equals(captcha)){
             return new BaseResponse(StatusCode.InvalidCode);
         }
@@ -67,7 +59,7 @@ public class SysLoginController extends AbstractController{
             return new BaseResponse(StatusCode.AccountHasBeenLocked);
         }catch (AuthenticationException e) {
             return new BaseResponse(StatusCode.AccountValidateFail);
-        }
+        }*/
 
         return new BaseResponse(StatusCode.Success);
     }
@@ -77,7 +69,7 @@ public class SysLoginController extends AbstractController{
      * @param response
      * @throws Exception
      */
-    @RequestMapping("captcha.jpg")
+    /*@RequestMapping("captcha.jpg")
     public void captcha(HttpServletResponse response) throws Exception {
         response.setHeader("Cache-Control", "no-store, no-cache");
         response.setContentType("image/jpeg");
@@ -93,7 +85,7 @@ public class SysLoginController extends AbstractController{
         ImageIO.write(image, "jpg", out);
 
         System.out.println("验证码："+text);
-    }
+    }*/
 
     /**
      * 退出登录

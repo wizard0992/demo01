@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/base")
-public class BaseController {
+public class BaseTestController {
     //打印日志
-    private static final Logger log = LoggerFactory.getLogger(BaseController.class);
+    private static final Logger log = LoggerFactory.getLogger(BaseTestController.class);
     /**
      * 测试案例01（只传输一个json格式的数据，不请求界面）
      * @param name

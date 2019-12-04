@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
  * @date 2019/12/2 16:08
  */
 @Controller
-public class AbstractController {
+public abstract class AbstractController {
 
     //日志打印
     protected Logger log= LoggerFactory.getLogger(getClass());
