@@ -36,8 +36,8 @@ public class SysLoginController extends AbstractController{
 
         log.info("用户名：{} 密码：{} 验证码:{}",username,password,captcha);
 
-        //校验验证码
-       /* String kaptcha= ShiroUtil.getKaptcha(Constants.KAPTCHA_SESSION_KEY);
+        //校验验证码：方法一
+       String kaptcha= ShiroUtil.getKaptcha(Constants.KAPTCHA_SESSION_KEY);
         if (!kaptcha.equals(captcha)){
             return new BaseResponse(StatusCode.InvalidCode);
         }
@@ -59,13 +59,13 @@ public class SysLoginController extends AbstractController{
             return new BaseResponse(StatusCode.AccountHasBeenLocked);
         }catch (AuthenticationException e) {
             return new BaseResponse(StatusCode.AccountValidateFail);
-        }*/
+        }
 
         return new BaseResponse(StatusCode.Success);
     }
 
     /**
-     * 生成验证码方式二
+     * 生成验证码：方式二
      * @param response
      * @throws Exception
      */
