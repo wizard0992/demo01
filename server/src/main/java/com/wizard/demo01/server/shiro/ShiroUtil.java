@@ -43,24 +43,24 @@ public class ShiroUtil {
 		getSession().setAttribute(key, value);
 	}
 
-	public static Object getSessionAttribute(Object key) {
-		return getSession().getAttribute(key);
-	}
+		public static Object getSessionAttribute(Object key) {
+			return getSession().getAttribute(key);
+		}
 
-	public static boolean isLogin() {
-		return SecurityUtils.getSubject().getPrincipal() != null;
-	}
+		public static boolean isLogin() {
+			return SecurityUtils.getSubject().getPrincipal() != null;
+		}
 
-	public static void logout() {
-		SecurityUtils.getSubject().logout();
-	}
+		public static void logout() {
+			SecurityUtils.getSubject().logout();
+		}
 
-	/**
-	 * 获取验证码
-	 * @param key
-	 * @return
-	 */
-	public static String getKaptcha(String key) {
+		/**
+		 * 获取验证码
+		 * @param key
+		 * @return
+		 */
+		public static String getKaptcha(String key) {
 		Object object=getSessionAttribute(key);
 		if (object==null){
 			throw new CommonException("验证码已失效!");

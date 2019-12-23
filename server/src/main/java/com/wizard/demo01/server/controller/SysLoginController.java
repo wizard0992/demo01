@@ -1,22 +1,15 @@
 package com.wizard.demo01.server.controller;
 
-import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 import com.wizard.demo01.common.response.BaseResponse;
 import com.wizard.demo01.common.response.StatusCode;
-import com.wizard.demo01.server.shiro.ShiroUtil;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.*;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.imageio.ImageIO;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
-import java.awt.image.BufferedImage;
 
 /**
  * 登录Controller
@@ -30,13 +23,34 @@ public class SysLoginController extends AbstractController{
     private Producer producer;
 
 
+    /**
+     * 登录
+     * @param username
+     * @param password
+     * @param captcha
+     * @return
+     */
     @RequestMapping(value = "/sys/login",method = RequestMethod.POST)
     @ResponseBody
     public BaseResponse login(String username,String password,String captcha){
 
         log.info("用户名：{} 密码：{} 验证码:{}",username,password,captcha);
 
-        //校验验证码：方法一
+        //异常处理
+        try{
+            //提交登录
+            Subject subject = SecurityUtils.getSubject();
+            if (!subject.isAuthenticated()){
+                UsernamePasswordToken token = new UsernamePasswordToken(username,password);
+                subject.login(token);
+            }
+        }catch (Exception e){
+            return new BaseResponse(StatusCode.Fail.getCode(),e.getMessage());
+        }
+        return new BaseResponse(StatusCode.Success);
+    }
+
+/*        //校验验证码：方法一
        String kaptcha= ShiroUtil.getKaptcha(Constants.KAPTCHA_SESSION_KEY);
         if (!kaptcha.equals(captcha)){
             return new BaseResponse(StatusCode.InvalidCode);
@@ -62,7 +76,7 @@ public class SysLoginController extends AbstractController{
         }
 
         return new BaseResponse(StatusCode.Success);
-    }
+    }*/
 
     /**
      * 生成验证码：方式二
@@ -90,11 +104,11 @@ public class SysLoginController extends AbstractController{
     /**
      * 退出登录
      */
-    @RequestMapping(value = "logout",method = RequestMethod.GET)
+    /*@RequestMapping(value = "logout",method = RequestMethod.GET)
     public String logout(){
         //销毁当前的shiro的用户session
         ShiroUtil.logout();
         return "redirect:login.html";
-    }
+    }*/
 
 }
