@@ -70,11 +70,11 @@ public class ShiroUtil {
 		System.out.println("新的验证码："+newCode);
 
 		return newCode;
-	}
+		}
 
-//	public static void main(String[] args) {
-//		String password="123456";
-//		System.out.println(ShiroUtil.sha256(password, "YzcmCZNvbXocrsz9dm8e"));
-//	}
+	/*public static void main(String[] args) {
+		String password="wizard";
+		System.out.println(ShiroUtil.sha256("wizard", "YzcmCZNvbXocrsz9dm8e"));
+	}*/
 
 }

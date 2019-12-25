@@ -5,6 +5,7 @@ import com.wizard.demo01.model.entity.SysUserEntity;
 import com.wizard.demo01.model.mapper.SysUserDao;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
@@ -88,6 +89,12 @@ public class UserRealm extends AuthorizingRealm {
      */
     @Override
     public void setCredentialsMatcher(CredentialsMatcher credentialsMatcher){
+
+        //解密算法
+        HashedCredentialsMatcher shaCredentailsMatcher = new HashedCredentialsMatcher();
+        shaCredentailsMatcher.setHashAlgorithmName(ShiroUtil.hashAlgorithmName);
+        shaCredentailsMatcher.setHashIterations(ShiroUtil.hashIterations);
+
         super.setCredentialsMatcher(credentialsMatcher);
     }
 }
