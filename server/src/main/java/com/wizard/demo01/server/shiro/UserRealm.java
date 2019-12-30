@@ -3,6 +3,7 @@ package com.wizard.demo01.server.shiro;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.wizard.demo01.model.entity.SysUserEntity;
 import com.wizard.demo01.model.mapper.SysUserDao;
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
@@ -48,53 +49,60 @@ public class UserRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-
+       /*解决方法01
+        System.out.println("调用认证方法");
         UsernamePasswordToken token = (UsernamePasswordToken) authenticationToken;
+        final String username = token.getUsername();
+        String password = String.valueOf(token.getPassword());
 
-        final String userName = token.getUsername();
-        final String password = String.valueOf(token.getPassword());
-
-        log.info("用户名:{},密码:{}",userName,password);
-
-        SysUserEntity entity = sysUserDao.selectOne(new QueryWrapper<SysUserEntity>().eq("username",userName));
-
+        log.info("用户名:{},密码:{}",username,password);
+        SysUserEntity entity = sysUserDao.selectOne(new QueryWrapper<SysUserEntity>().eq("username",username));
         //账户不存在
         if (entity == null){
             throw new UnknownAccountException("用户不存在");
         }
-
         //账户已禁用
         if (0 == entity.getStatus()){
             throw new DisabledAccountException("账户已禁用，请联系管理员");
+        }*/
+
+        UsernamePasswordToken token= (UsernamePasswordToken) authenticationToken;
+        final String userName=token.getUsername();
+        final String password=String.valueOf(token.getPassword());
+
+        log.info("用户名: {} 密码：{}",userName,password);
+
+        //SysUserEntity entity=sysUserDao.selectOne(new QueryWrapper<SysUserEntity>().eq("username",userName));
+
+        SysUserEntity entity=sysUserDao.selectByUserName(userName);//演示sql注入攻击
+        //账户不存在
+        if (entity==null){
+            throw new UnknownAccountException("账户不存在!");
         }
-/*
-
-        if (!entity.getPassword().equals(password)){
-            throw new IncorrectCredentialsException("账户密码不匹配");
+        //账户被禁用
+        if (0 == entity.getStatus()){
+            throw new DisabledAccountException("账户已被禁用,请联系管理员!");
         }
-
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(entity,password,getName());
-*/
-
-        //返回信息
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(entity,password, ByteSource.Util.bytes(entity.getSalt()),getName());
-
-        return info;
+        //密码比对判断
+        String realPassword=ShiroUtil.sha256(password,entity.getSalt());
+        if (StringUtils.isBlank(realPassword) || !realPassword.equals(entity.getPassword())){
+            throw new IncorrectCredentialsException("账户密码不匹配!");
+        }
+        SimpleAuthenticationInfo info=new SimpleAuthenticationInfo(entity,password,getName());
+       //SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(entity, entity.getPassword(), ByteSource.Util.bytes(entity.getSalt()), getName());
+       return info;
     }
 
-
     /**
-     * 密码匹配器
+     * 密码匹配器 逻辑匹配
      * @param credentialsMatcher
      */
     @Override
     public void setCredentialsMatcher(CredentialsMatcher credentialsMatcher){
-
         //解密算法
         HashedCredentialsMatcher shaCredentailsMatcher = new HashedCredentialsMatcher();
         shaCredentailsMatcher.setHashAlgorithmName(ShiroUtil.hashAlgorithmName);
         shaCredentailsMatcher.setHashIterations(ShiroUtil.hashIterations);
-
         super.setCredentialsMatcher(credentialsMatcher);
     }
 }
