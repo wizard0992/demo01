@@ -1,6 +1,5 @@
 package com.wizard.demo01.server.shiro;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.wizard.demo01.model.entity.SysUserEntity;
 import com.wizard.demo01.model.mapper.SysUserDao;
 import org.apache.commons.lang.StringUtils;
@@ -10,7 +9,6 @@ import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
