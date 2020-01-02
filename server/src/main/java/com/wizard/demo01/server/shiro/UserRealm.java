@@ -1,19 +1,19 @@
 package com.wizard.demo01.server.shiro;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.wizard.demo01.model.entity.SysUserEntity;
 import com.wizard.demo01.model.mapper.SysUserDao;
-import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 /**
  * shiro用于认证用户~授权
  * @author wizard_0992
@@ -21,12 +21,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class UserRealm extends AuthorizingRealm {
-
     private static final Logger log = LoggerFactory.getLogger(UserRealm.class);
-
     @Autowired
     private SysUserDao sysUserDao;
-
     /**
      * 资源-权限分配-授权
      * @param principalCollection
@@ -34,11 +31,8 @@ public class UserRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-
-
         return null;
     }
-
     /**
      * 用户认证-登录认证
      * @param authenticationToken
@@ -67,12 +61,9 @@ public class UserRealm extends AuthorizingRealm {
         UsernamePasswordToken token= (UsernamePasswordToken) authenticationToken;
         final String userName=token.getUsername();
         final String password=String.valueOf(token.getPassword());
-
         log.info("用户名: {} 密码：{}",userName,password);
-
-        //SysUserEntity entity=sysUserDao.selectOne(new QueryWrapper<SysUserEntity>().eq("username",userName));
-
-        SysUserEntity entity=sysUserDao.selectByUserName(userName);//演示sql注入攻击
+        SysUserEntity entity=sysUserDao.selectOne(new QueryWrapper<SysUserEntity>().eq("username",userName));
+        //SysUserEntity entity=sysUserDao.selectByUserName(userName);//演示sql注入攻击
         //账户不存在
         if (entity==null){
             throw new UnknownAccountException("账户不存在!");
@@ -81,16 +72,21 @@ public class UserRealm extends AuthorizingRealm {
         if (0 == entity.getStatus()){
             throw new DisabledAccountException("账户已被禁用,请联系管理员!");
         }
-        //密码比对判断
-        String realPassword=ShiroUtil.sha256(password,entity.getSalt());
+        //名文密码匹配
+        /*if (!entity.getPassword().equals(password)){
+            throw new IncorrectCredentialsException("账号密码不匹配");
+        }
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(entity,password,getName());*/
+        //密码比对判断,第三种验证逻辑
+        /*String realPassword=ShiroUtil.sha256(password,entity.getSalt());
         if (StringUtils.isBlank(realPassword) || !realPassword.equals(entity.getPassword())){
             throw new IncorrectCredentialsException("账户密码不匹配!");
         }
-        SimpleAuthenticationInfo info=new SimpleAuthenticationInfo(entity,password,getName());
-       //SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(entity, entity.getPassword(), ByteSource.Util.bytes(entity.getSalt()), getName());
+        SimpleAuthenticationInfo info=new SimpleAuthenticationInfo(entity,password,getName());*/
+        //第一种验证逻辑-交给shiro的密码匹配器去实现
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(entity, entity.getPassword(), ByteSource.Util.bytes(entity.getSalt()), getName());
        return info;
     }
-
     /**
      * 密码匹配器 逻辑匹配
      * @param credentialsMatcher
@@ -98,9 +94,9 @@ public class UserRealm extends AuthorizingRealm {
     @Override
     public void setCredentialsMatcher(CredentialsMatcher credentialsMatcher){
         //解密算法
-        HashedCredentialsMatcher shaCredentailsMatcher = new HashedCredentialsMatcher();
-        shaCredentailsMatcher.setHashAlgorithmName(ShiroUtil.hashAlgorithmName);
-        shaCredentailsMatcher.setHashIterations(ShiroUtil.hashIterations);
-        super.setCredentialsMatcher(credentialsMatcher);
+        HashedCredentialsMatcher shaCredentialsMatcher = new HashedCredentialsMatcher();
+        shaCredentialsMatcher.setHashAlgorithmName(ShiroUtil.hashAlgorithmName);
+        shaCredentialsMatcher.setHashIterations(ShiroUtil.hashIterations);
+        super.setCredentialsMatcher(shaCredentialsMatcher);
     }
 }

@@ -11,13 +11,11 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 /**
  * ShiroConfig的通用配置
  * @author wizard_0992
  * @date 2019/12/10 11:14
  */
-
 /**
  * 1 配置shiro安全管理器，向安全管理器中注入Realm域
  * 2 配置Realm域：注入密码比较器
@@ -27,7 +25,6 @@ import java.util.Map;
 
 @Configuration
 public class ShiroConfig {
-
     /**
      *安全器管理-管理所有的subject
      * 1、配置安全管理器，并且注入Realm域
@@ -40,7 +37,6 @@ public class ShiroConfig {
         securityManager.setRememberMeManager(null);
         return securityManager;
     }
-
     //过滤链配置
     @Bean("shiroFilter")
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager){
@@ -64,20 +60,17 @@ public class ShiroConfig {
         shiroFilter.setFilterChainDefinitionMap(filterMap);
         return shiroFilter;
     }
-
     //关于shiro的Bean的生命周期的管理
     @Bean("lifecycleBeanPostProcessor")
     public LifecycleBeanPostProcessor lifecycleBeanPostProcessor(){
         return new LifecycleBeanPostProcessor();
     }
-
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager){
         AuthorizationAttributeSourceAdvisor author = new AuthorizationAttributeSourceAdvisor();
         author.setSecurityManager(securityManager);
         return author;
     }
-
     //过滤链配置
     /*@Bean("shiroFilter")
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager){
@@ -101,5 +94,4 @@ public class ShiroConfig {
         shiroFilter.setFilterChainDefinitionMap(filterMap);
         return shiroFilter;
     }*/
-
 }
