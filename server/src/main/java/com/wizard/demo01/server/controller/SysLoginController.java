@@ -27,8 +27,14 @@ import java.awt.image.BufferedImage;
 @Controller
 public class SysLoginController extends AbstractController{
 
+    @Autowired
     private Producer producer;
 
+    /**
+     * 验证码生成
+     * @param response
+     * @throws Exception
+     */
     @RequestMapping("captcha.jpg")
     public void captcha(HttpServletResponse response) throws Exception {
         response.setHeader("Cache-Control", "no-store, no-cache");

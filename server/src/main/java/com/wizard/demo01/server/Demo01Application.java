@@ -6,7 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
+
+/**
+ * @author wizard_0992
+ * @date 2020/01/02 15:51
+ */
 
 @SpringBootApplication
 @MapperScan(basePackages = "com.wizard.demo01.model.mapper")

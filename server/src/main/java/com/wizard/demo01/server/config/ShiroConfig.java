@@ -71,27 +71,4 @@ public class ShiroConfig {
         author.setSecurityManager(securityManager);
         return author;
     }
-    //过滤链配置
-    /*@Bean("shiroFilter")
-    public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager){
-        ShiroFilterFactoryBean shiroFilter=new ShiroFilterFactoryBean();
-        shiroFilter.setSecurityManager(securityManager);
-        //设定用户没有登录认证时的跳转链接、没有授权时的跳转链接
-        shiroFilter.setLoginUrl("/login.html");
-        shiroFilter.setUnauthorizedUrl("/");
-        //过滤器链配置
-        Map<String, String> filterMap = new LinkedHashMap();
-        filterMap.put("/swagger/**", "anon");
-        filterMap.put("/swagger-ui.html", "anon");
-        filterMap.put("/webjars/**", "anon");
-        filterMap.put("/swagger-resources/**", "anon");
-        filterMap.put("/statics/**", "anon");
-        filterMap.put("/login.html", "anon");
-        filterMap.put("/sys/login", "anon");
-        filterMap.put("/favicon.ico", "anon");
-        filterMap.put("/captcha.jpg", "anon");
-        filterMap.put("/**","authc");
-        shiroFilter.setFilterChainDefinitionMap(filterMap);
-        return shiroFilter;
-    }*/
 }
