@@ -21,7 +21,7 @@
   <![endif]-->
 </head>
 <!-- ADD THE CLASS layout-boxed TO GET A BOXED LAYOUT -->
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini index-page">
 <!-- Site wrapper -->
 <div class="wrapper" id="pmpapp" v-cloak>
   <header class="main-header">
@@ -40,8 +40,6 @@
 	  <div style="float:left;color:#fff;padding:15px 10px;">欢迎：用户名 ~ {{user.username}} &nbsp; 姓名 ~ {{user.name}}</div>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <!--<li><a href="javascript:;" @click="linkAuthor"><i class="fa fa-video-camera"></i> &nbsp;视频教程</a></li>
-          <li><a href="javascript:;" @click="linkAuthor"><i class="fa fa-external-link"></i> &nbsp;联系作者</a></li>-->
 		  <li><a href="javascript:;" @click="updatePassword"><i class="fa fa-unlock"></i> &nbsp;修改密码</a></li>
           <li><a href="logout"><i class="fa fa-sign-out"></i> &nbsp;注销系统</a></li>
 		</ul>
@@ -58,13 +56,13 @@
       <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
 
-      <!--动态生成菜单-->
+      <!--&lt;!&ndash;动态生成菜单&ndash;&gt;
       <ul class="sidebar-menu">
-       <!-- <li class="header">菜单栏</li>-->
+       &lt;!&ndash; <li class="header">菜单栏</li>&ndash;&gt;
         
-        <!-- vue生成的菜单 -->
+        &lt;!&ndash; vue生成的菜单 &ndash;&gt;
 		<menu-item :item="item" v-for="item in menuList"></menu-item>
-      </ul>
+      </ul>-->
 
         <!--静态-->
         <ul class="sidebar-menu">
@@ -106,7 +104,7 @@
   <!-- /.content-wrapper -->
 
   <footer class="main-footer" style="text-align: center;">
-    Copyright &copy; &nbsp; 2019 <a class="CopyRight" href="https://gitee.com/steadyjack/SpringBoot-SecondKill" target="_blank"><strong style="color: red">程序员实战基地</strong></a> All Rights Reserved
+    Copyright &copy; &nbsp; 2020 <a class="CopyRight" href="www.wizardai.cn" target="_blank"><strong style="color: red">wizard_AI</strong></a> All Rights Reserved
   </footer>
 
   <!-- Add the sidebar's background. This div must be placed
