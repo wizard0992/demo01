@@ -72,10 +72,10 @@ public class ShiroUtil {
 		return newCode;
 		}
 
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		String password="debug";
 		String password1 = sha256(password, "q8WwxUma2bqO4voBMNK4");
 		System.out.println(password1);
-	}
+	}*/
 
 }
