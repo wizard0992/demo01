@@ -2,9 +2,6 @@ package com.wizard.demo01.server.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.wizard.demo01.model.entity.SysUserEntity;
-import com.wizard.demo01.server.util.PageUtil;
-
-import java.util.Map;
 
 /**
  * @author wizard_0992

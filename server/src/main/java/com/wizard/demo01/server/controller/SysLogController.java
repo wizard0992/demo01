@@ -1,17 +1,9 @@
 package com.wizard.demo01.server.controller;
 
-import com.google.common.collect.Maps;
-import com.wizard.demo01.common.response.BaseResponse;
-import com.wizard.demo01.common.response.StatusCode;
 import com.wizard.demo01.server.service.SysLogService;
-import com.wizard.demo01.server.util.PageUtil;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.Map;
 
 /**
  * 系统日志
