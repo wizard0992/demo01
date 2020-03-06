@@ -1,6 +1,5 @@
 package com.wizard.demo01.model.mapper;
 
-
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.wizard.demo01.model.entity.SysDictEntity;
 import org.apache.ibatis.annotations.Mapper;

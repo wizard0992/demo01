@@ -1,15 +1,20 @@
 package com.wizard.demo01.common.utils;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import lombok.Data;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.List;
 
 /**
  * 分页查询and模糊查询
+ * 统一封装的分页工具类 ：也可以指定 long类型；但是一般int就够用了 ~ 根据具体的业务情况而定!
  * @author wizard_0992
  * @date 2020/2/26 22:03
  */
+@Data
+@ToString
 public class PageUtil implements Serializable {
 
     //总的记录数

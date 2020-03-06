@@ -3,6 +3,7 @@ package com.wizard.demo01.server.config;
 
 import com.wizard.demo01.server.shiro.ShiroVariable;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import java.util.HashMap;
@@ -10,9 +11,11 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
+ * Freemarker配置
  * @author wizard_0992
  * @date 2019/12/16 9:54
  */
+@Configuration
 public class FreemarkerConfig {
 
     @Bean

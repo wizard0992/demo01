@@ -11,7 +11,6 @@ import org.springframework.context.ConfigurableApplicationContext;
  * @author wizard_0992
  * @date 2020/01/02 15:51
  */
-
 @SpringBootApplication
 @MapperScan(basePackages = "com.wizard.demo01.model.mapper")
 public class Demo01Application extends SpringBootServletInitializer {

@@ -3,9 +3,8 @@ package com.wizard.demo01.common.exception;
 /**
  * 自定义异常
  * @author wizard_0992
- * @date 2019/12/2 16:00
+ * @date 2020/3/3 17:33
  */
-
 public class CommonException extends RuntimeException {
     private static final long serialVersionUID = 1L;
 

@@ -13,17 +13,16 @@ public class ShiroVariable {
 
     /**
      * 判断当前登录用户（主体）是否有 指定的权限
-     *
      * @param permission 指定的权限
      * @return
      */
     public Boolean hasPermission(String permission) {
         Subject subject = SecurityUtils.getSubject();
-        if (subject!=null && subject.isPermitted(permission)){
+        /*if (subject!=null && subject.isPermitted(permission)){
             return true;
         }
-        return false;
+        return false;*/
 
-        //return (subject != null && subject.isPermitted(permission)) ? true : false;
+        return (subject != null && subject.isPermitted(permission)) ? true : false;
     }
 }

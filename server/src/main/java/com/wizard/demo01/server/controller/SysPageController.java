@@ -22,11 +22,22 @@ public class SysPageController {
     }*/
 
     @RequestMapping("modules/{module}/{page}.html")
-    public String page(@PathVariable String module,@PathVariable String page){ return "modules/"+module+"/"+page; }
+    public String page(@PathVariable String module,@PathVariable String page){
+        return "modules/"+module+"/"+page;
+    }
 
-    @RequestMapping(value = {"index.html","/"})
+
+    @RequestMapping(value = {"index.html","/"} )
     public String index(){
         return "index";
+    }
+
+    @RequestMapping("login.html")
+    public String login(){
+        if (SecurityUtils.getSubject().isAuthenticated()){
+            return "redirect:index.html";
+        }
+        return "login";
     }
 
     @RequestMapping("main.html")
@@ -39,12 +50,4 @@ public class SysPageController {
         return "404";
     }
 
-    @RequestMapping("login.html")
-    public String login(){
-        /*if (SecurityUtils.getSubject().isAuthenticated()){
-            return "redirect:index.html";
-        }*/
-        return "login";
-        }
-
-        }
+}

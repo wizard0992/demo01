@@ -12,9 +12,14 @@ import java.util.Map;
  * @date 2020/2/6 15:09
  */
 
-
 public interface SysPostService extends IService<SysPostEntity> {
 
     PageUtil queryPage(Map<String,Object> params);
+
+    void savePost(SysPostEntity entity);
+
+    void updatePost(SysPostEntity entity);
+
+    void deletePatch(Long[] ids);
 
 }
