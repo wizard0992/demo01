@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>员工角色权限管理平台</title>
+  <title>权限管理平台</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="${request.contextPath}/statics/css/bootstrap.min.css">
@@ -37,13 +37,22 @@
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a>
-	  <div style="float:left;color:#fff;padding:15px 10px;">欢迎：用户名 ~ {{user.username}} &nbsp; 姓名 ~ {{user.name}}</div>
-      <div class="navbar-custom-menu">
+	  <div style="float:left;color:#fff;padding:15px 10px;">用户名 : {{user.username}} &nbsp; 姓名 : {{user.name}}</div>
+        <div class="btn-group navbar-custom-menu">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                登录管理 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="javascript:;" @click="updatePassword"><i class="fa fa-unlock"></i> &nbsp;修改密码</a></li>
+                <li><a href="logout"><i class="fa fa-sign-out"></i> &nbsp;注销系统</a></li>
+            </ul>
+        </div>
+      <!--<div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
             <li><a href="javascript:;" @click="updatePassword"><i class="fa fa-unlock"></i> &nbsp;修改密码</a></li>
             <li><a href="logout"><i class="fa fa-sign-out"></i> &nbsp;注销系统</a></li>
 		</ul>
-      </div>
+      </div>-->
     </nav>
   </header>
 
@@ -90,7 +99,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <ol class="breadcrumb" id="nav_title" style="position:static;float:none;">
-        <li class="active"><i class="fa fa-home" style="font-size:20px;position:relative;top:2px;left:-3px;"></i> &nbsp;首页</li>
+        <li class="active"><i class="fa fa-home" style="font-size:20px;position:relative;top:2px;left:-3px;"></i> &nbsp;<a href="index.html">首页</a></li>
         <li class="active">{{navTitle}}</li>
       </ol>
     </section>
@@ -104,7 +113,7 @@
   <!-- /.content-wrapper -->
 
   <footer class="main-footer" style="text-align: center;">
-    Copyright &copy; &nbsp; 2019 <a class="CopyRight" href="https://gitee.com/steadyjack/SpringBoot-SecondKill" target="_blank"><strong style="color: red">程序员实战基地</strong></a> All Rights Reserved
+    Copyright &copy;  2020 <strong style="color: red">Wizard·PQ</strong> All Rights Reserved
   </footer>
 
   <!-- Add the sidebar's background. This div must be placed
