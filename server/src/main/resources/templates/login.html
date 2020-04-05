@@ -64,6 +64,9 @@
 
   </div>
   <!-- /.login-box-body -->
+    <!--<footer class="main-footer" style="text-align: center;">
+        Copyright &copy;  2020 <strong style="color: red">Wizard·AI</strong> All Rights Reserved
+    </footer>-->
 </div>
 <!-- /.login-box -->
 <script src="${request.contextPath}/statics/libs/jquery.min.js"></script>
@@ -76,8 +79,8 @@
 var vm = new Vue({
 	el:'#pmpapp',
 	data:{
-		username: 'admin',
-		password: 'debug',
+		username: '',
+		password: '',
 		captcha: '',
 		error: false,
 		errorMsg: '',

@@ -47,10 +47,8 @@ public class SysRoleController extends AbstractController {
         BaseResponse response=new BaseResponse(StatusCode.Success);
         try {
             Map<String,Object> resMap= Maps.newHashMap();
-
             PageUtil page=sysRoleService.queryPage(paramMap);
             resMap.put("page",page);
-
             response.setData(resMap);
         }catch (Exception e){
             response=new BaseResponse(StatusCode.Fail.getCode(),e.getMessage());
@@ -70,7 +68,6 @@ public class SysRoleController extends AbstractController {
         BaseResponse response = new BaseResponse(StatusCode.Success);
         try {
             log.info("新增角色~接收到数据：{}",entity);
-
             sysRoleService.saveRole(entity);
         } catch (Exception e) {
             response = new BaseResponse(StatusCode.Fail.getCode(), e.getMessage());
@@ -118,7 +115,6 @@ public class SysRoleController extends AbstractController {
         BaseResponse response = new BaseResponse(StatusCode.Success);
         try {
             log.info("修改角色~接收到数据：{}",entity);
-
             sysRoleService.updateRole(entity);
         } catch (Exception e) {
             response = new BaseResponse(StatusCode.Fail.getCode(), e.getMessage());
@@ -139,7 +135,6 @@ public class SysRoleController extends AbstractController {
         BaseResponse response = new BaseResponse(StatusCode.Success);
         try {
             log.info("删除角色~接收到数据：{}",ids);
-
             sysRoleService.deleteBatch(ids);
         } catch (Exception e) {
             response = new BaseResponse(StatusCode.Fail.getCode(), e.getMessage());
@@ -155,10 +150,8 @@ public class SysRoleController extends AbstractController {
         BaseResponse response=new BaseResponse(StatusCode.Success);
         try {
             log.info("角色列表~select..");
-
             Map<String,Object> resMap= Maps.newHashMap();
             resMap.put("list",sysRoleService.list());
-
             response.setData(resMap);
         }catch (Exception e){
             response=new BaseResponse(StatusCode.Fail.getCode(),e.getMessage());

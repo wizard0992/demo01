@@ -120,58 +120,14 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuDao, SysMenuEntity> i
 
         List<SysMenuEntity> tempList;
         for (SysMenuEntity entity:menuList){
-
             //当前菜单类型为 目录（一级菜单），即进行遍历； （递归终止：不是目录；或者子菜单列表为空）
             if (entity.getType() == Constant.MenuType.CATALOG.getValue()){
                 tempList=queryListByParentId(entity.getMenuId(),menuIdList);
                 entity.setList(getMenuTrees(tempList,menuIdList));
             }
-
             subMenuList.add(entity);
         }
         return subMenuList;
     }
 
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
